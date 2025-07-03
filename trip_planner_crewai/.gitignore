@@ -5,3 +5,6 @@ agent
 .streamlit/secrets.toml
 .venv
 .env
+.idea
+arguments_cli.txt
+curl_request.txt
