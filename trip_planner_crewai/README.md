@@ -21,14 +21,21 @@ CrewAI simplifies the orchestration of role-playing AI agents. In VacAIgent, the
 
 To experience the VacAIgent app:
 
-- **Configure Environment**: Set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/), and [OpenAI](https://openai.com/). Use the `secrets.example` as a guide to add your keys then move that file (`secrets.toml`) to `.streamlit/secrets.toml`.
+- **Configure Environment**: Set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/), and [OpenAI](https://openai.com/). Use the `secrets.example` as a guide to add your keys then move that file (`secrets.toml`) to `.streamlit/secrets.toml`. Alternatively add environment variables in `.env` file and load using os.getenv()
+
+```python
+import os
+from dotenv import load_dotenv
+load_dotenv()
+os.getenv("OPENAI_API_KEY")
+```
 
 - **Install Dependencies**: Execute `pip install -r requirements.txt` in your terminal.
 - **Launch the CLI Mode**: Run `python cli_app.py -o "Bangalore, India" -d "Krabi, Thailand" -s 2024-05-01 -e 2024-05-10 -i "2 adults who love swimming, dancing, hiking, shopping, food, water sports adventures, rock climbing"` to start the CLI Mode.
 - **Launch the FASTAPI**: Run `uvicorn api_app:app --reload` to start the FASTAPI server.
 - **Launch the Streamlit App**: Run `streamlit run streamlit_app.py` to start the Streamlit interface.
 
-★ **Disclaimer**: The application uses GEMINI by default. Ensure you have access to GEMINI's API and be aware of the associated costs.
+★ **Disclaimer**: The application uses OPENAI API by default. Ensure you have access to OPENAI API and be aware of the associated costs.
 
 ## Details & Explanation
 
@@ -48,7 +55,11 @@ class TripAgents():
     def __init__(self, llm: BaseChatModel = None):
         if llm is None:
             #self.llm = LLM(model="groq/deepseek-r1-distill-llama-70b")
-            self.llm = LLM(model="gemini/gemini-2.0-flash")
+            self.llm = LLM(model="gemini/gemini-2.0-flash",api_key="")
+            or 
+             self.llm = LLM(model="gpt-4",
+                        base_url="https://api.openai.com/v1",
+                        api_key=os.getenv(""))
         else:
             self.llm = llm
 
