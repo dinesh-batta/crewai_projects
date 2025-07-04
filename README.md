@@ -2,5 +2,5 @@
 
 #The list of projects
 ---------------------------
-**1. trip planner using crewai**
-**2. agentic rag**
+- **1. trip planner using crewai**
+- **2. agentic rag**
