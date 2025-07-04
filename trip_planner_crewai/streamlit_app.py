@@ -30,7 +30,7 @@ class TripCrew:
         self.date_range = f"{date_range[0].strftime('%Y-%m-%d')} to {date_range[1].strftime('%Y-%m-%d')}"
         self.output_placeholder = st.empty()
         self.llm = LLM(
-            model="gpt-4",
+            model="gpt-4o-mini",
             temperature=0.7,
             base_url="https://api.openai.com/v1",
             api_key=os.getenv("OPENAI_API_KEY")

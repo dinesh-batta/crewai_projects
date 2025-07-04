@@ -19,7 +19,7 @@ load_dotenv()
 # llm = LLM( model="ollama/mistral:latest",
 #         base_url="http://localhost:11434")
 #llm = LLM(model="groq/llama-3.3-70b-versatile",api_key=os.getenv("GROQ_API_KEY"))
-llm=  LLM(              model="gpt-4",
+llm=  LLM(              model="gpt-4o-mini",
                         temperature=0.7,
                         base_url="https://api.openai.com/v1",
                         api_key=os.getenv("OPENAI_API_KEY")
